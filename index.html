@@ -13,7 +13,9 @@ body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.65 Georgia,"Times
 .wrap{max-width:760px;margin:0 auto;padding:0 20px 60px}
 nav{display:flex;gap:18px;flex-wrap:wrap;padding:22px 0;font:15px system-ui,sans-serif;border-bottom:1px solid var(--line)}
 nav a{color:var(--muted);text-decoration:none}nav a:hover{color:var(--accent)}
-header{padding:48px 0 12px}
+header{padding:40px 0 12px;display:flex;gap:24px;align-items:center;flex-wrap:wrap}
+.photo{width:150px;height:150px;border-radius:50%;object-fit:cover;border:3px solid var(--line);background:var(--card);flex:none}
+.chips{display:flex;flex-wrap:wrap;gap:8px}.chips span{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:4px 14px;font:14px system-ui,sans-serif}
 h1{font-size:2.3rem;margin:0 0 6px;letter-spacing:-.01em}
 .tag{color:var(--muted);font:16px system-ui,sans-serif}
 h2{font:600 1.05rem system-ui,sans-serif;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);margin:44px 0 14px}
@@ -27,11 +29,15 @@ footer{margin-top:50px;color:var(--muted);font:14px system-ui,sans-serif}
 </head>
 <body>
 <div class="wrap">
-<nav><a href="#about">About</a><a href="#research">Research</a><a href="#publications">Publications</a><a href="#experience">Experience</a><a href="#contact">Contact</a></nav>
+<nav><a href="#about">About</a><a href="#research">Research</a><a href="#skills">Skills</a><a href="#publications">Publications</a><a href="#experience">Experience</a><a href="#contact">Contact</a></nav>
 
 <header>
+<img class="photo" src="photo.jpg" alt="Photo of Mayank" onerror="this.style.display='none'">
+<div>
 <h1>Mayank</h1>
 <div class="tag">PhD Scholar, Centre of Excellence in Disaster Mitigation and Management (CoEDMM), IIT Roorkee</div>
+<div class="tag" style="margin-top:6px">Himalayan hydrology &middot; snow &amp; glacier melt &middot; hydro-climatic hazards</div>
+</div>
 </header>
 
 <section id="about">
@@ -49,6 +55,11 @@ footer{margin-top:50px;color:var(--muted);font:14px system-ui,sans-serif}
 <li>Hydro-climatic hazards and extreme rainfall in the Northwest Himalaya</li>
 <li>CMIP6 climate projections and their impact on snow</li>
 </ul>
+</section>
+
+<section id="skills">
+<h2>Skills &amp; tools</h2>
+<div class="chips"><span>SPHY</span><span>Python</span><span>PCRaster</span><span>Google Earth Engine</span><span>QGIS / ArcGIS</span><span>CMIP6</span><span>Remote sensing</span><span>Model calibration</span></div>
 </section>
 
 <section id="publications">
@@ -71,7 +82,7 @@ footer{margin-top:50px;color:var(--muted);font:14px system-ui,sans-serif}
 <h2>Contact</h2>
 <p>Email: <a href="mailto:mayank_u@dm.iitr.ac.in">mayank_u@dm.iitr.ac.in</a><br>
 <a href="https://github.com/thelunarmayank">GitHub</a>
-<!-- add: Google Scholar, ORCID, LinkedIn -->
+<!-- add: Google Scholar, ORCID, LinkedIn, CV (cv.pdf) -->
 </p>
 </section>
 
