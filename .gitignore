@@ -1,0 +1,4 @@
+# local tooling and files that are not part of the website
+.claude/
+stock_forecast_lab/
+index.original.html

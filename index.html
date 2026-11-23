@@ -5,88 +5,261 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Mayank | Himalayan Hydrology</title>
 <meta name="description" content="PhD scholar at CoEDMM, IIT Roorkee, working on Himalayan mountain hydrology, snow and glacier melt, and hydro-climatic hazards.">
+<meta property="og:title" content="Mayank | Himalayan Hydrology">
+<meta property="og:description" content="Himalayan mountain hydrology, snow and glacier melt, and hydro-climatic hazards.">
+<meta property="og:image" content="images/parbati-mass-balance.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2314394a'/%3E%3Cpath d='M6 50 L24 22 L32 33 L40 18 L58 50Z' fill='%23cfe6ee'/%3E%3Cpath d='M40 18 L46 29 L42 27 L38 31 L35 27Z M24 22 L28 28 L24 27 L21 29Z' fill='%23fff'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,650&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#fafaf7;--fg:#1d2426;--muted:#5d6a6e;--accent:#1f6f8b;--card:#fff;--line:#e3e6e4}
-@media (prefers-color-scheme:dark){:root{--bg:#101517;--fg:#e8eceb;--muted:#9aa8ab;--accent:#6cc0dc;--card:#182024;--line:#26323a}}
+:root{
+  --bg:#f6f7f4;--fg:#18272d;--muted:#56666c;--accent:#1f6f8b;--accent-2:#c2552d;
+  --card:#ffffff;--line:#dfe4e2;--chip:#e7f0f2;
+  --sky1:#dcecf2;--sky2:#f6f7f4;--m1:#9fbdca;--m2:#5f8798;--m3:#2c5566;--m4:#14394a;--snow:#ffffff;
+  --shadow:0 1px 2px rgba(20,40,50,.05),0 6px 20px rgba(20,40,50,.06);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0d1417;--fg:#e6ecec;--muted:#98a8ac;--accent:#6cc0dc;--accent-2:#f08a5d;
+  --card:#141e22;--line:#24323a;--chip:#17323d;
+  --sky1:#0f2530;--sky2:#0d1417;--m1:#29495a;--m2:#1f3b49;--m3:#162d38;--m4:#0f2029;--snow:#cfe3ea;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.25);
+}}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.65 Georgia,"Times New Roman",serif}
-.wrap{max-width:760px;margin:0 auto;padding:0 20px 60px}
-nav{display:flex;gap:18px;flex-wrap:wrap;padding:22px 0;font:15px system-ui,sans-serif;border-bottom:1px solid var(--line)}
-nav a{color:var(--muted);text-decoration:none}nav a:hover{color:var(--accent)}
-header{padding:40px 0 12px;display:flex;gap:24px;align-items:center;flex-wrap:wrap}
-.photo{width:150px;height:150px;border-radius:50%;object-fit:cover;border:3px solid var(--line);background:var(--card);flex:none}
-.chips{display:flex;flex-wrap:wrap;gap:8px}.chips span{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:4px 14px;font:14px system-ui,sans-serif}
-h1{font-size:2.3rem;margin:0 0 6px;letter-spacing:-.01em}
-.tag{color:var(--muted);font:16px system-ui,sans-serif}
-h2{font:600 1.05rem system-ui,sans-serif;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);margin:44px 0 14px}
-a{color:var(--accent)}
-.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin-bottom:12px}
-.card b{display:block}
-.card span{color:var(--muted);font:14px system-ui,sans-serif}
-ul{padding-left:20px}li{margin:6px 0}
-footer{margin-top:50px;color:var(--muted);font:14px system-ui,sans-serif}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.7 Inter,system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:var(--accent);text-underline-offset:3px}
+.wrap{max-width:980px;margin:0 auto;padding:0 20px}
+
+/* nav */
+.top{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:saturate(1.4) blur(10px);-webkit-backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:60px}
+.brand{font:650 1.15rem Fraunces,Georgia,serif;color:var(--fg);text-decoration:none;letter-spacing:-.01em}
+.top nav{display:flex;gap:22px;font-size:.92rem}
+.top nav a{color:var(--muted);text-decoration:none}
+.top nav a:hover{color:var(--accent)}
+@media (max-width:720px){.top nav{gap:14px;overflow-x:auto;scrollbar-width:none}.top nav a:nth-child(n+4){display:none}.brand{flex:none}}
+
+/* hero */
+.hero{position:relative;background:linear-gradient(180deg,var(--sky1),var(--sky2) 92%);overflow:hidden}
+.hero .wrap{position:relative;z-index:2;padding-top:72px;padding-bottom:210px}
+.eyebrow{display:inline-block;font-size:.78rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);background:var(--chip);padding:5px 12px;border-radius:999px}
+h1{font:650 clamp(2.6rem,7vw,4.4rem)/1.02 Fraunces,Georgia,serif;letter-spacing:-.025em;margin:18px 0 14px}
+.lede{max-width:620px;font-size:clamp(1.05rem,2.2vw,1.22rem);color:var(--muted);margin:0 0 26px}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 20px;border-radius:10px;font-weight:600;font-size:.95rem;text-decoration:none;transition:transform .15s,box-shadow .15s}
+.btn.primary{background:var(--m4);color:#fff}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .btn.primary{background:var(--accent);color:#06171d}}
+.btn.ghost{border:1px solid var(--line);color:var(--fg);background:var(--card)}
+.btn:hover{transform:translateY(-1px);box-shadow:var(--shadow)}
+.hero-grid{display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center}
+.portrait{width:220px;height:220px;border-radius:50%;object-fit:cover;border:6px solid var(--card);box-shadow:0 10px 40px rgba(20,57,74,.25)}
+@media (max-width:760px){.hero-grid{grid-template-columns:1fr;gap:24px}.portrait{width:120px;height:120px;border-width:4px;order:-1}}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chips span{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:7px 16px;font-size:.92rem;font-weight:500}
+.range{position:absolute;left:0;right:0;bottom:0;width:100%;height:240px;z-index:1}
+@media (max-width:600px){.hero .wrap{padding-top:48px;padding-bottom:150px}.range{height:160px}}
+
+/* sections */
+section{padding:64px 0 8px}
+h2{font:650 clamp(1.6rem,3.6vw,2.1rem)/1.15 Fraunces,Georgia,serif;letter-spacing:-.015em;margin:0 0 8px}
+.kicker{font-size:.78rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-2);margin:0 0 6px}
+.intro{color:var(--muted);max-width:640px;margin:0 0 28px}
+
+.about{display:grid;grid-template-columns:1.4fr 1fr;gap:40px;align-items:start}
+.about p{margin:0 0 14px}
+.path{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 22px 10px;box-shadow:var(--shadow)}
+.path h3{font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 14px}
+.steps{list-style:none;margin:0;padding:0;position:relative}
+.steps:before{content:"";position:absolute;left:7px;top:8px;bottom:18px;width:2px;background:var(--line)}
+.steps li{position:relative;padding:0 0 16px 30px;line-height:1.45}
+.steps li:before{content:"";position:absolute;left:0;top:5px;width:16px;height:16px;border-radius:50%;background:var(--card);border:3px solid var(--accent)}
+.steps li:last-child:before{background:var(--accent)}
+.steps small{display:block;color:var(--muted);font-size:.85rem}
+@media (max-width:760px){.about{grid-template-columns:1fr;gap:24px}}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:16px}
+.tile{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;box-shadow:var(--shadow)}
+.tile svg{width:34px;height:34px;color:var(--accent);margin-bottom:10px}
+.tile b{display:block;font-weight:600;margin-bottom:4px;line-height:1.35}
+.tile span{color:var(--muted);font-size:.92rem;line-height:1.55;display:block}
+
+/* figures */
+.feature{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:var(--shadow);margin-bottom:20px}
+.feature .img{background:#fff;padding:14px}
+.feature .cap{padding:18px 22px 20px;border-top:1px solid var(--line)}
+.feature .cap b{display:block;font-size:1.02rem;margin-bottom:2px}
+.feature .cap span{color:var(--muted);font-size:.92rem}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:0 0 20px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px}
+.stat .n{font:650 2rem/1 Fraunces,Georgia,serif;color:var(--accent);letter-spacing:-.02em}
+.stat .l{color:var(--muted);font-size:.88rem;margin-top:6px;line-height:1.4}
+@media (max-width:640px){.stats{grid-template-columns:1fr}}
+
+/* lists */
+.list{display:flex;flex-direction:column;gap:12px}
+.item{display:grid;grid-template-columns:92px 1fr;gap:18px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 20px;transition:border-color .15s}
+.item:hover{border-color:var(--accent)}
+.item .yr{font:650 1.25rem Fraunces,Georgia,serif;color:var(--accent)}
+.item b{display:block;font-weight:600;line-height:1.4}
+.item span{color:var(--muted);font-size:.92rem}
+.badge{display:inline-block;font-size:.72rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;border-radius:6px;background:var(--chip);color:var(--accent);margin-left:6px;vertical-align:2px}
+@media (max-width:520px){.item{grid-template-columns:1fr;gap:4px}}
+
+/* contact */
+.contact{margin:72px 0 0;background:var(--m4);color:#e9f3f6;border-radius:20px;padding:40px clamp(22px,5vw,48px);position:relative;overflow:hidden}
+.contact h2{color:#fff}
+.contact p{color:#b9d0d8;max-width:520px}
+.contact .btn.primary{background:#fff;color:var(--m4)}
+.contact .btn.ghost{background:transparent;border-color:rgba(255,255,255,.3);color:#fff}
+.contact svg.bg{position:absolute;right:-20px;bottom:-10px;width:360px;opacity:.18;pointer-events:none}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .contact{background:#13303c}}
+footer{color:var(--muted);font-size:.88rem;padding:28px 0 40px}
 </style>
 </head>
 <body>
-<div class="wrap">
-<nav><a href="#about">About</a><a href="#research">Research</a><a href="#skills">Skills</a><a href="#publications">Publications</a><a href="#experience">Experience</a><a href="#contact">Contact</a></nav>
 
-<header>
-<img class="photo" src="photo.jpg" alt="Photo of Mayank" onerror="this.style.display='none'">
-<div>
-<h1>Mayank</h1>
-<div class="tag">PhD Scholar, Centre of Excellence in Disaster Mitigation and Management (CoEDMM), IIT Roorkee</div>
-<div class="tag" style="margin-top:6px">Himalayan hydrology &middot; snow &amp; glacier melt &middot; hydro-climatic hazards</div>
-</div>
+<div class="top"><div class="wrap">
+  <a class="brand" href="#">Mayank</a>
+  <nav><a href="#about">About</a><a href="#research">Research</a><a href="#skills">Skills</a><a href="#highlight">Highlight</a><a href="#publications">Publications</a><a href="#experience">Experience</a><a href="#contact">Contact</a></nav>
+</div></div>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+    <span class="eyebrow">CoEDMM &middot; IIT Roorkee</span>
+    <h1>Water from the<br>high Himalaya</h1>
+    <p class="lede">I'm Mayank, a PhD scholar studying how snow, glaciers and rainfall feed Himalayan rivers, and how a changing climate alters the hazards downstream.</p>
+    <div class="btns">
+      <a class="btn primary" href="#research">Explore my research</a>
+      <a class="btn ghost" href="#contact">Get in touch</a>
+    </div>
+    </div>
+    <img class="portrait" src="photo.jpg" width="600" height="600" alt="Photo of Mayank" onerror="this.style.display='none'">
+  </div>
+  <!-- original illustration: layered Himalayan ridgelines with snow caps -->
+  <svg class="range" viewBox="0 0 1440 240" preserveAspectRatio="none" aria-hidden="true">
+    <path fill="var(--m1)" d="M0 150 L90 110 L170 135 L260 70 L330 105 L420 40 L505 95 L590 65 L680 120 L760 55 L850 100 L940 30 L1030 90 L1120 60 L1210 115 L1300 70 L1380 105 L1440 85 V240 H0Z"/>
+    <path fill="var(--snow)" opacity=".85" d="M420 40 L446 57 L432 60 L420 52 L407 62 L397 56Z M940 30 L968 48 L952 50 L941 43 L927 54 L914 47Z M760 55 L780 68 L768 70 L759 64 L748 71Z M260 70 L280 84 L268 86 L259 80 L247 87Z M1120 60 L1140 73 L1128 75 L1119 69 L1107 76Z"/>
+    <path fill="var(--m2)" d="M0 185 L120 140 L210 165 L330 115 L430 160 L540 120 L640 165 L760 110 L880 160 L990 125 L1100 170 L1220 130 L1330 165 L1440 140 V240 H0Z"/>
+    <path fill="var(--m3)" d="M0 215 L150 180 L280 205 L420 170 L560 210 L700 175 L850 212 L1000 180 L1150 210 L1300 182 L1440 200 V240 H0Z"/>
+    <path fill="var(--bg)" d="M0 240 V228 C240 214 480 236 720 226 C960 216 1200 236 1440 224 V240Z"/>
+  </svg>
 </header>
 
+<main class="wrap">
+
 <section id="about">
-<h2>About</h2>
-<p>I study how snow, glaciers and rainfall feed Himalayan rivers, and how a changing climate alters the hazards downstream. I grew up in a remote village in Uttarakhand, where drying springs and shrinking winter snowfall were part of everyday talk. That is where my interest in the cryosphere (the frozen parts of Earth: snow, glaciers, permafrost) began.</p>
-<p>My path: BTech in Civil Engineering, MTech in Water Resources Engineering, and now a PhD at CoEDMM, IIT Roorkee.</p>
+  <p class="kicker">About</p>
+  <h2>From a mountain village to the cryosphere</h2>
+  <div class="about">
+    <div>
+      <p>I grew up in a remote village in Uttarakhand, where drying springs and shrinking winter snowfall were part of everyday talk. That is where my interest in the cryosphere (the frozen parts of Earth: snow, glaciers, permafrost) began.</p>
+      <p>Today I combine field knowledge, remote sensing and hydrological modelling to understand how Himalayan water supply and hazards are changing.</p>
+    </div>
+    <div class="path">
+      <h3>Academic path</h3>
+      <ul class="steps">
+        <li>BTech<small>Civil Engineering</small></li>
+        <li>MTech<small>Water Resources Engineering</small></li>
+        <li>PhD<small>CoEDMM, IIT Roorkee (ongoing)</small></li>
+      </ul>
+    </div>
+  </div>
 </section>
 
 <section id="research">
-<h2>Research interests</h2>
-<ul>
-<li>Himalayan mountain hydrology</li>
-<li>Cryosphere-hydrology interactions: snow and glacier melt</li>
-<li>Hydrological modelling (SPHY, a spatially distributed model for snow, glacier and rain-fed basins)</li>
-<li>Hydro-climatic hazards and extreme rainfall in the Northwest Himalaya</li>
-<li>CMIP6 climate projections and their impact on snow</li>
-</ul>
+  <p class="kicker">Research interests</p>
+  <h2>What I work on</h2>
+  <p class="intro">Snow, ice and extreme rain in the Northwest Himalaya, and what they mean for rivers and the people who live along them.</p>
+  <div class="grid">
+    <div class="tile">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M2 20 9 8l4 6 3-4 6 10Z"/><path d="M7.5 10.5 9 8l1.6 2.4"/></svg>
+      <b>Himalayan mountain hydrology</b><span>How high-mountain basins store and release water through the seasons.</span>
+    </div>
+    <div class="tile">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M12 2v20M3.3 7l17.4 10M3.3 17 20.7 7"/><path d="m9.5 3.5 2.5 2 2.5-2M9.5 20.5l2.5-2 2.5 2"/></svg>
+      <b>Snow and glacier melt</b><span>Cryosphere-hydrology interactions and their share of river flow.</span>
+    </div>
+    <div class="tile">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/></svg>
+      <b>Hydrological modelling</b><span>SPHY, a spatially distributed model for snow, glacier and rain-fed basins.</span>
+    </div>
+    <div class="tile">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M17 15a5 5 0 0 0-1-9.9A6 6 0 0 0 4.5 8 4 4 0 0 0 6 15.5"/><path d="m9 17-1 3M13 17l-1 3M17 17l-1 3"/></svg>
+      <b>Extreme rainfall and hazards</b><span>Hydro-climatic hazards and extreme rainfall in the Northwest Himalaya.</span>
+    </div>
+    <div class="tile">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18"/></svg>
+      <b>CMIP6 climate projections</b><span>How future climate scenarios change snow cover and melt.</span>
+    </div>
+  </div>
 </section>
 
 <section id="skills">
-<h2>Skills &amp; tools</h2>
-<div class="chips"><span>SPHY</span><span>Python</span><span>PCRaster</span><span>Google Earth Engine</span><span>QGIS / ArcGIS</span><span>CMIP6</span><span>Remote sensing</span><span>Model calibration</span></div>
+  <p class="kicker">Skills</p>
+  <h2>Skills and tools</h2>
+  <div class="chips"><span>SPHY</span><span>Python</span><span>PCRaster</span><span>Google Earth Engine</span><span>QGIS / ArcGIS</span><span>CMIP6</span><span>Remote sensing</span><span>Model calibration</span></div>
+</section>
+
+<section id="highlight">
+  <p class="kicker">Research highlight</p>
+  <h2>Parbati Glacier is thinning</h2>
+  <p class="intro">A geodetic mass-balance study of the Parbati basin, Himachal Pradesh, comparing two radar elevation models (SRTM, February 2000, and Copernicus GLO-30, about 2013).</p>
+  <div class="stats">
+    <div class="stat"><div class="n">&minus;0.92</div><div class="l">m water equivalent per year, Parbati Glacier (&plusmn;0.20)</div></div>
+    <div class="stat"><div class="n">0.27 Gt</div><div class="l">ice mass lost from the glacier over about 13 years</div></div>
+    <div class="stat"><div class="n">282</div><div class="l">glaciers mapped across the 1,722 km&sup2; basin</div></div>
+  </div>
+  <figure class="feature" style="margin:0 0 20px">
+    <div class="img"><img src="images/parbati-mass-balance.jpg" width="1400" height="700" loading="lazy" alt="Bar chart of mass balance: Parbati Glacier minus 0.92, Parbati basin minus 0.55 with artefact removed and minus 0.18 with artefact corrected, in metres water equivalent per year."></div>
+    <figcaption class="cap"><b>Yearly mass balance, 2000 to about 2013</b><span>The glacier value is robust. The basin-wide value depends on how a known artefact in the GLO-30 data is handled, so it is best read as a range.</span></figcaption>
+  </figure>
+  <figure class="feature" style="margin:0">
+    <div class="img"><img src="images/parbati-elevation-change.jpg" width="1600" height="743" loading="lazy" alt="Map of surface elevation change across the Parbati basin, with hatched areas showing excluded data, next to a profile of glacier area and thinning by elevation."></div>
+    <figcaption class="cap"><b>Where the ice is thinning</b><span>Left: elevation change (red is thinning); hatched areas were excluded. Right: glacier area and mean thinning in 50 m elevation bands. Thinning is strongest below about 4,800 m.</span></figcaption>
+  </figure>
 </section>
 
 <section id="publications">
-<h2>Publications</h2>
-<div class="card"><b>First-author paper</b><span>Physics and Chemistry of the Earth, 2026 &middot; add full title and DOI</span></div>
-<div class="card"><b>Co-authored paper</b><span>Science of the Total Environment, 2025 &middot; add full title and DOI</span></div>
-<div class="card"><b>Co-authored paper</b><span>Physical Geography, 2025 &middot; add full title and DOI</span></div>
-<div class="card"><b>Co-authored paper</b><span>Geomatics, Natural Hazards and Risk, 2024 &middot; add full title and DOI</span></div>
-<div class="card"><b>Poster</b><span>Cryosphere and Related Hazards in High Mountain Asia, Almaty, Kazakhstan, 2022</span></div>
+  <p class="kicker">Publications</p>
+  <h2>Papers and presentations</h2>
+  <div class="list">
+    <div class="item"><div class="yr">2026</div><div><b>First-author paper <span class="badge">First author</span></b><span>Physics and Chemistry of the Earth &middot; add full title and DOI</span></div></div>
+    <div class="item"><div class="yr">2025</div><div><b>Co-authored paper</b><span>Science of the Total Environment &middot; add full title and DOI</span></div></div>
+    <div class="item"><div class="yr">2025</div><div><b>Co-authored paper</b><span>Physical Geography &middot; add full title and DOI</span></div></div>
+    <div class="item"><div class="yr">2024</div><div><b>Co-authored paper</b><span>Geomatics, Natural Hazards and Risk &middot; add full title and DOI</span></div></div>
+    <div class="item"><div class="yr">2022</div><div><b>Poster <span class="badge">Conference</span></b><span>Cryosphere and Related Hazards in High Mountain Asia, Almaty, Kazakhstan</span></div></div>
+  </div>
 </section>
 
 <section id="experience">
-<h2>Experience</h2>
-<div class="card"><b>PhD Scholar, CoEDMM, IIT Roorkee</b><span>Present</span></div>
-<div class="card"><b>Junior Research Fellow, IIRS-ISRO, Dehradun</b><span>Snow cover and glacier melt studies across the Northwest Himalaya</span></div>
-<div class="card"><b>Junior Research Fellow, GBPNIHESD</b><span>Water-sustainability mapping in the eastern Kumaon Himalaya</span></div>
+  <p class="kicker">Experience</p>
+  <h2>Where I've worked</h2>
+  <div class="list">
+    <div class="item"><div class="yr">Now</div><div><b>PhD Scholar, CoEDMM, IIT Roorkee</b><span>Himalayan hydrology, cryosphere and extreme rainfall</span></div></div>
+    <div class="item"><div class="yr">JRF</div><div><b>Junior Research Fellow, IIRS-ISRO, Dehradun</b><span>Snow cover and glacier melt studies across the Northwest Himalaya</span></div></div>
+    <div class="item"><div class="yr">JRF</div><div><b>Junior Research Fellow, GBPNIHESD</b><span>Water-sustainability mapping in the eastern Kumaon Himalaya</span></div></div>
+  </div>
 </section>
 
-<section id="contact">
-<h2>Contact</h2>
-<p>Email: <a href="mailto:mayank_u@dm.iitr.ac.in">mayank_u@dm.iitr.ac.in</a><br>
-<a href="https://github.com/thelunarmayank">GitHub</a>
-<!-- add: Google Scholar, ORCID, LinkedIn, CV (cv.pdf) -->
-</p>
+<section id="contact" style="padding-top:0">
+  <div class="contact">
+    <svg class="bg" viewBox="0 0 200 100" aria-hidden="true"><path fill="#fff" d="M0 100 L50 35 L75 62 L110 15 L160 75 L180 55 L200 80 V100Z"/></svg>
+    <p class="kicker" style="color:#f2a27f">Contact</p>
+    <h2>Let's talk mountains and water</h2>
+    <p>Open to collaborations on Himalayan hydrology, cryosphere and hazard research.</p>
+    <div class="btns">
+      <a class="btn primary" href="mailto:mayank_u@dm.iitr.ac.in">Email me</a>
+      <a class="btn ghost" href="https://github.com/thelunarmayank">GitHub</a>
+      <!-- add: Google Scholar, ORCID, LinkedIn, CV (cv.pdf) buttons -->
+    </div>
+  </div>
 </section>
 
-<footer>&copy; 2026 Mayank</footer>
-</div>
+</main>
+
+<footer><div class="wrap">&copy; 2026 Mayank &middot; Figures from my own analysis.</div></footer>
 </body>
 </html>
