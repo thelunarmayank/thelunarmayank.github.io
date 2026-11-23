@@ -103,7 +103,12 @@ h2{font:650 clamp(1.6rem,3.6vw,2.1rem)/1.15 Fraunces,Georgia,serif;letter-spacin
 .item:hover{border-color:var(--accent)}
 .item .yr{font:650 1.25rem Fraunces,Georgia,serif;color:var(--accent)}
 .item b{display:block;font-weight:600;line-height:1.4}
-.item span{color:var(--muted);font-size:.92rem}
+.item span{color:var(--muted);font-size:.92rem;display:block}
+.item span.badge{display:inline-block}
+.item a.pub{color:var(--fg);text-decoration:none}
+.item a.pub:hover{color:var(--accent);text-decoration:underline}
+.item .au{margin:4px 0 2px}
+.item .au strong{color:var(--fg);font-weight:600}
 .badge{display:inline-block;font-size:.72rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;border-radius:6px;background:var(--chip);color:var(--accent);margin-left:6px;vertical-align:2px}
 @media (max-width:520px){.item{grid-template-columns:1fr;gap:4px}}
 
@@ -226,12 +231,13 @@ footer{color:var(--muted);font-size:.88rem;padding:28px 0 40px}
   <p class="kicker">Publications</p>
   <h2>Papers and presentations</h2>
   <div class="list">
-    <div class="item"><div class="yr">2026</div><div><b>First-author paper <span class="badge">First author</span></b><span>Physics and Chemistry of the Earth &middot; add full title and DOI</span></div></div>
-    <div class="item"><div class="yr">2025</div><div><b>Co-authored paper</b><span>Science of the Total Environment &middot; add full title and DOI</span></div></div>
-    <div class="item"><div class="yr">2025</div><div><b>Co-authored paper</b><span>Physical Geography &middot; add full title and DOI</span></div></div>
-    <div class="item"><div class="yr">2024</div><div><b>Co-authored paper</b><span>Geomatics, Natural Hazards and Risk &middot; add full title and DOI</span></div></div>
-    <div class="item"><div class="yr">2022</div><div><b>Poster <span class="badge">Conference</span></b><span>Cryosphere and Related Hazards in High Mountain Asia, Almaty, Kazakhstan</span></div></div>
+    <div class="item"><div class="yr">2026</div><div><b><a class="pub" href="https://doi.org/10.1016/j.pce.2026.104401">Projected climate change and its influence on watershed hydrology: A case study of Suketi watershed, Himachal Pradesh</a> <span class="badge">First author</span></b><span class="au"><strong>M. Upadhyay</strong>, A. Goswami, P. K. Thakur, P. R. Dhote</span><span><em>Physics and Chemistry of the Earth, Parts A/B/C</em> &middot; <a href="https://doi.org/10.1016/j.pce.2026.104401">doi:10.1016/j.pce.2026.104401</a></span></div></div>
+    <div class="item"><div class="yr">2026</div><div><b><a class="pub" href="https://doi.org/10.1016/j.scitotenv.2025.181215">Understanding the influence of landcover on spring dynamics and evaporation, in Himalayan region, using stable isotope and discharge</a></b><span class="au">N. Pant, D. Hagare, B. Maheshwari, et al., <strong>M. Upadhyay</strong></span><span><em>Science of the Total Environment</em> &middot; <a href="https://doi.org/10.1016/j.scitotenv.2025.181215">doi:10.1016/j.scitotenv.2025.181215</a></span></div></div>
+    <div class="item"><div class="yr">2025</div><div><b><a class="pub" href="https://doi.org/10.1080/02723646.2025.2589772">Assessing the opto-physical effects of contaminants on snow: a case study of the Western Himalayas</a></b><span class="au">V. Balla, P. K. Garg, <strong>M. Upadhyay</strong></span><span><em>Physical Geography</em> &middot; <a href="https://doi.org/10.1080/02723646.2025.2589772">doi:10.1080/02723646.2025.2589772</a></span></div></div>
+    <div class="item"><div class="yr">2024</div><div><b><a class="pub" href="https://doi.org/10.1080/19475705.2024.2378979">Unravelling flash flood dynamics of Song watershed, Doon Valley: key insights for floodplain management</a> <span class="badge">Open access</span></b><span class="au">S. K. Dwivedi, P. K. Thakur, P. R. Dhote, A. Kruczkiewicz, <strong>M. Upadhyay</strong>, et al.</span><span><em>Geomatics, Natural Hazards and Risk</em> &middot; <a href="https://doi.org/10.1080/19475705.2024.2378979">doi:10.1080/19475705.2024.2378979</a></span></div></div>
+    <div class="item"><div class="yr">2022</div><div><b>Identifying glacier ice thickness and potential glacial lake sites with volume estimation in the Ladakh Himalaya <span class="badge">Poster</span></b><span class="au">V. Khajuria, P. K. Thakur, B. R. Nikam, et al., <strong>M. Upadhyay</strong></span><span>Cryosphere and Related Hazards in High Mountain Asia, Almaty, Kazakhstan</span></div></div>
   </div>
+  <p style="margin-top:18px"><a href="https://www.researchgate.net/profile/Mayank_Upadhyay4">All publications on ResearchGate &rarr;</a></p>
 </section>
 
 <section id="experience">
@@ -252,6 +258,7 @@ footer{color:var(--muted);font-size:.88rem;padding:28px 0 40px}
     <p>Open to collaborations on Himalayan hydrology, cryosphere and hazard research.</p>
     <div class="btns">
       <a class="btn primary" href="mailto:mayank_u@dm.iitr.ac.in">Email me</a>
+      <a class="btn ghost" href="https://www.researchgate.net/profile/Mayank_Upadhyay4">ResearchGate</a>
       <a class="btn ghost" href="https://github.com/thelunarmayank">GitHub</a>
       <!-- add: Google Scholar, ORCID, LinkedIn, CV (cv.pdf) buttons -->
     </div>
