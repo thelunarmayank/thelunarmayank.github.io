@@ -58,6 +58,34 @@ h1{font:650 clamp(2.6rem,7vw,4.4rem)/1.02 Fraunces,Georgia,serif;letter-spacing:
 @media (max-width:760px){.hero-grid{grid-template-columns:1fr;gap:24px}.portrait{width:120px;height:120px;border-width:4px;order:-1}}
 .chips{display:flex;flex-wrap:wrap;gap:10px}
 .chips span{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:7px 16px;font-size:.92rem;font-weight:500}
+/* motion */
+#snow{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none}
+.clouds{position:absolute;left:0;top:0;width:100%;height:100%;z-index:0;pointer-events:none;overflow:hidden}
+.cloud{position:absolute;height:38px;border-radius:999px;background:var(--snow);opacity:.55;filter:blur(2px);animation:drift linear infinite}
+.cloud:before,.cloud:after{content:"";position:absolute;background:inherit;border-radius:50%}
+.cloud:before{width:46%;height:150%;left:14%;top:-60%}
+.cloud:after{width:34%;height:120%;left:50%;top:-40%}
+@keyframes drift{from{transform:translateX(-30vw)}to{transform:translateX(130vw)}}
+.range path{transition:transform .1s linear;will-change:transform}
+.portrait{animation:float 6s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.hero h1,.hero .lede,.hero .btns,.hero .eyebrow{animation:rise .9s cubic-bezier(.2,.7,.2,1) both}
+.hero .eyebrow{animation-delay:.05s}.hero h1{animation-delay:.15s}.hero .lede{animation-delay:.3s}.hero .btns{animation-delay:.45s}
+@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+.tile,.item,.stat,.chips span{transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease}
+.tile:hover,.stat:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(20,57,74,.14)}
+.tile:hover svg{animation:wiggle .6s ease}
+@keyframes wiggle{0%,100%{transform:rotate(0)}30%{transform:rotate(-10deg)}60%{transform:rotate(8deg)}}
+.chips span:hover{transform:translateY(-2px);border-color:var(--accent);color:var(--accent)}
+.feature img{transition:transform .6s ease}
+.feature:hover img{transform:scale(1.02)}
+@media (prefers-reduced-motion:reduce){
+  *,*:before,*:after{animation:none!important;transition:none!important}
+  .reveal{opacity:1;transform:none}
+  #snow,.clouds{display:none}
+}
 .range{position:absolute;left:0;right:0;bottom:0;width:100%;height:240px;z-index:1}
 @media (max-width:600px){.hero .wrap{padding-top:48px;padding-bottom:150px}.range{height:160px}}
 
@@ -145,6 +173,12 @@ footer{color:var(--muted);font-size:.88rem;padding:28px 0 40px}
     </div>
     <img class="portrait" src="photo.jpg" width="600" height="600" alt="Photo of Mayank" onerror="this.style.display='none'">
   </div>
+  <div class="clouds" aria-hidden="true">
+    <div class="cloud" style="top:14%;width:150px;animation-duration:70s;animation-delay:-20s"></div>
+    <div class="cloud" style="top:30%;width:100px;animation-duration:95s;animation-delay:-60s;opacity:.4"></div>
+    <div class="cloud" style="top:8%;width:120px;animation-duration:85s;animation-delay:-5s;opacity:.35"></div>
+  </div>
+  <canvas id="snow" aria-hidden="true"></canvas>
   <!-- original illustration: layered Himalayan ridgelines with snow caps -->
   <svg class="range" viewBox="0 0 1440 240" preserveAspectRatio="none" aria-hidden="true">
     <path fill="var(--m1)" d="M0 150 L90 110 L170 135 L260 70 L330 105 L420 40 L505 95 L590 65 L680 120 L760 55 L850 100 L940 30 L1030 90 L1120 60 L1210 115 L1300 70 L1380 105 L1440 85 V240 H0Z"/>
@@ -270,6 +304,73 @@ footer{color:var(--muted);font-size:.88rem;padding:28px 0 40px}
 </section>
 
 </main>
+
+<script>
+(function(){
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // scroll reveal
+  var els = document.querySelectorAll('main section > *, .tile, .item, .stat, .feature');
+  els.forEach(function(el){ el.classList.add('reveal'); });
+  if ('IntersectionObserver' in window && !reduce) {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, {threshold: .12, rootMargin: '0px 0px -40px 0px'});
+    els.forEach(function(el, i){ el.style.transitionDelay = (i % 4) * 70 + 'ms'; io.observe(el); });
+  } else { els.forEach(function(el){ el.classList.add('in'); }); }
+  // backup: reveal anything already scrolled past or on screen
+  function sweep(){ var h = window.innerHeight; els.forEach(function(el){ if (!el.classList.contains('in') && el.getBoundingClientRect().top < h - 20) el.classList.add('in'); }); }
+  window.addEventListener('scroll', sweep, {passive: true}); window.addEventListener('load', sweep); setTimeout(sweep, 600);
+
+  // count-up numbers in the highlight stats
+  function countUp(el){
+    var txt = el.textContent, m = txt.match(/[\d.,]+/); if (!m) return;
+    var target = parseFloat(m[0].replace(/,/g,'')), dec = (m[0].split('.')[1]||'').length;
+    var pre = txt.slice(0, m.index), post = txt.slice(m.index + m[0].length), t0 = null;
+    function step(t){ if(!t0) t0 = t; var p = Math.min((t - t0)/1400, 1), e = 1 - Math.pow(1 - p, 3);
+      el.textContent = pre + (target * e).toFixed(dec) + post; if (p < 1) requestAnimationFrame(step); }
+    requestAnimationFrame(step);
+  }
+  if ('IntersectionObserver' in window && !reduce) {
+    var so = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if (e.isIntersecting){ countUp(e.target); so.unobserve(e.target); } });
+    }, {threshold: .6});
+    document.querySelectorAll('.stat .n').forEach(function(n){ so.observe(n); });
+  }
+
+  if (reduce) return;
+
+  // parallax on the mountain layers
+  var layers = document.querySelectorAll('.range path'), speeds = [0.18, 0.18, 0.1, 0.05, 0];
+  window.addEventListener('scroll', function(){
+    var y = Math.min(window.scrollY, 600);
+    layers.forEach(function(p, i){ p.style.transform = 'translateY(' + (y * (speeds[i] || 0)) + 'px)'; });
+  }, {passive: true});
+
+  // falling snow
+  var c = document.getElementById('snow'); if (!c || !c.getContext) return;
+  var ctx = c.getContext('2d'), flakes = [], W, H, dpr = Math.min(window.devicePixelRatio || 1, 2);
+  function size(){ W = c.clientWidth; H = c.clientHeight; c.width = W * dpr; c.height = H * dpr; ctx.setTransform(dpr,0,0,dpr,0,0);
+    var n = Math.round(W * H / 9000); flakes = [];
+    for (var i = 0; i < n; i++) flakes.push({x: Math.random()*W, y: Math.random()*H, r: Math.random()*2.2+.6, s: Math.random()*.6+.25, w: Math.random()*Math.PI*2}); }
+  size(); window.addEventListener('resize', size);
+  var dark = matchMedia('(prefers-color-scheme: dark)');
+  var running = true;
+  new IntersectionObserver(function(e){ running = e[0].isIntersecting; if (running) requestAnimationFrame(tick); }).observe(c);
+  function tick(){
+    if (!running) return;
+    ctx.clearRect(0,0,W,H);
+    ctx.fillStyle = dark.matches ? 'rgba(220,235,242,.75)' : 'rgba(255,255,255,.95)';
+    ctx.shadowColor = 'rgba(31,111,139,.35)'; ctx.shadowBlur = dark.matches ? 0 : 3;
+    for (var i = 0; i < flakes.length; i++){ var f = flakes[i];
+      f.y += f.s; f.w += .01; f.x += Math.sin(f.w) * .35;
+      if (f.y > H + 4){ f.y = -4; f.x = Math.random()*W; }
+      ctx.beginPath(); ctx.arc(f.x, f.y, f.r, 0, 6.283); ctx.fill(); }
+    requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+})();
+</script>
 
 <footer><div class="wrap">&copy; 2026 Mayank &middot; Figures from my own analysis.</div></footer>
 </body>
