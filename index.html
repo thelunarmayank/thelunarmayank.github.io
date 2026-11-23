@@ -79,7 +79,7 @@ h2{font:650 clamp(1.6rem,3.6vw,2.1rem)/1.15 Fraunces,Georgia,serif;letter-spacin
 .steps small{display:block;color:var(--muted);font-size:.85rem}
 @media (max-width:760px){.about{grid-template-columns:1fr;gap:24px}}
 
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:16px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(270px,100%),1fr));gap:16px}
 .tile{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;box-shadow:var(--shadow)}
 .tile svg{width:34px;height:34px;color:var(--accent);margin-bottom:10px}
 .tile b{display:block;font-weight:600;margin-bottom:4px;line-height:1.35}
@@ -116,6 +116,8 @@ h2{font:650 clamp(1.6rem,3.6vw,2.1rem)/1.15 Fraunces,Georgia,serif;letter-spacin
 .contact{margin:72px 0 0;background:var(--m4);color:#e9f3f6;border-radius:20px;padding:40px clamp(22px,5vw,48px);position:relative;overflow:hidden}
 .contact h2{color:#fff}
 .contact p{color:#b9d0d8;max-width:520px}
+.contact p.mail{font-size:1.1rem;margin:0 0 22px;color:#fff}
+.contact p.mail a{color:#fff;font-weight:600;overflow-wrap:anywhere}
 .contact .btn.primary{background:#fff;color:var(--m4)}
 .contact .btn.ghost{background:transparent;border-color:rgba(255,255,255,.3);color:#fff}
 .contact svg.bg{position:absolute;right:-20px;bottom:-10px;width:360px;opacity:.18;pointer-events:none}
@@ -237,7 +239,7 @@ footer{color:var(--muted);font-size:.88rem;padding:28px 0 40px}
     <div class="item"><div class="yr">2024</div><div><b><a class="pub" href="https://doi.org/10.1080/19475705.2024.2378979">Unravelling flash flood dynamics of Song watershed, Doon Valley: key insights for floodplain management</a> <span class="badge">Open access</span></b><span class="au">S. K. Dwivedi, P. K. Thakur, P. R. Dhote, A. Kruczkiewicz, <strong>M. Upadhyay</strong>, et al.</span><span><em>Geomatics, Natural Hazards and Risk</em> &middot; <a href="https://doi.org/10.1080/19475705.2024.2378979">doi:10.1080/19475705.2024.2378979</a></span></div></div>
     <div class="item"><div class="yr">2022</div><div><b>Identifying glacier ice thickness and potential glacial lake sites with volume estimation in the Ladakh Himalaya <span class="badge">Poster</span></b><span class="au">V. Khajuria, P. K. Thakur, B. R. Nikam, et al., <strong>M. Upadhyay</strong></span><span>Cryosphere and Related Hazards in High Mountain Asia, Almaty, Kazakhstan</span></div></div>
   </div>
-  <p style="margin-top:18px"><a href="https://www.researchgate.net/profile/Mayank_Upadhyay4">All publications on ResearchGate &rarr;</a></p>
+  <p style="margin-top:18px">All publications: <a href="https://scholar.google.com/citations?user=JDXnlPQAAAAJ&amp;hl=en">Google Scholar</a> &middot; <a href="https://www.researchgate.net/profile/Mayank_Upadhyay4">ResearchGate</a></p>
 </section>
 
 <section id="experience">
@@ -256,11 +258,13 @@ footer{color:var(--muted);font-size:.88rem;padding:28px 0 40px}
     <p class="kicker" style="color:#f2a27f">Contact</p>
     <h2>Let's talk mountains and water</h2>
     <p>Open to collaborations on Himalayan hydrology, cryosphere and hazard research.</p>
+    <p class="mail">&#9993; <a href="mailto:mayankupadhyay06@gmail.com">mayankupadhyay06@gmail.com</a><br>&#9993; <a href="mailto:mayank_u@dm.iitr.ac.in">mayank_u@dm.iitr.ac.in</a></p>
     <div class="btns">
-      <a class="btn primary" href="mailto:mayank_u@dm.iitr.ac.in">Email me</a>
+      <a class="btn primary" href="mailto:mayankupadhyay06@gmail.com">Email me</a>
+      <a class="btn ghost" href="https://scholar.google.com/citations?user=JDXnlPQAAAAJ&amp;hl=en">Google Scholar</a>
       <a class="btn ghost" href="https://www.researchgate.net/profile/Mayank_Upadhyay4">ResearchGate</a>
       <a class="btn ghost" href="https://github.com/thelunarmayank">GitHub</a>
-      <!-- add: Google Scholar, ORCID, LinkedIn, CV (cv.pdf) buttons -->
+      <!-- add: ORCID, LinkedIn, CV (cv.pdf) buttons -->
     </div>
   </div>
 </section>
